@@ -11,5 +11,6 @@ class TextAlign
 
     public function new()
     {
+
     }
 }

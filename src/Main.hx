@@ -4,16 +4,15 @@ import flash.display.Sprite;
 import flash.events.Event;
 import flash.Lib;
 
-/**
- * ...
- * @author @edsilv
- */
-
 class Main extends Sprite 
 {
 	var inited:Bool;
 
 	/* ENTRY POINT */
+	
+	/*
+	 * Look for all 'AS3HX WARNING', 'note' and 'TODO's
+	 */
 	
 	function resize(e) 
 	{
@@ -25,7 +24,7 @@ class Main extends Sprite
 	{
 		if (inited) return;
 		inited = true;
-
+		
 		// (your code here)
 		
 		// Stage:
