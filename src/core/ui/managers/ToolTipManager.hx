@@ -24,14 +24,10 @@
   
 package core.ui.managers;
 
-import core.ui.managers.Timer;
-import core.ui.managers.TimerEvent;
-import core.ui.managers.ToolTip;
-import nme.display.Stage;
-import nme.events.MouseEvent;
-import nme.events.TimerEvent;
-import nme.utils.Timer;
-import nme.utils.DescribeType;
+import flash.display.Stage;
+import flash.events.MouseEvent;
+import flash.events.TimerEvent;
+import flash.utils.Timer;
 import core.ui.components.Application;
 import core.ui.components.ToolTip;
 import core.ui.components.UIComponent;
@@ -73,7 +69,7 @@ class ToolTipManager
 		if (Std.is(event.target, UIComponent) == false) return;
 		rolledOverComponent = null;
 		delayTimer.stop();
-		if (toolTip.stage) {
+		if (toolTip.stage != null) {
 			app.toolTipContainer.removeChild(toolTip);
 			rollOutTime = Math.round(haxe.Timer.stamp() * 1000);
         }

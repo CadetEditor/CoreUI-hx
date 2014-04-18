@@ -24,10 +24,8 @@
  
 package core.ui.util;
 
-import core.ui.util.ColorTransform;
-import core.ui.util.TextField;
-import nme.geom.ColorTransform;
-import nme.text.TextField;
+import flash.geom.ColorTransform;
+import flash.text.TextField;
 
 class SelectionColor
 {
@@ -48,14 +46,14 @@ class SelectionColor
 	{
 		var ct : ColorTransform = new ColorTransform();
 		ct.color = color;
-		with (ct) {
-			redMultiplier = -redMultiplier; 
-			greenMultiplier = -greenMultiplier; 
-			blueMultiplier = -blueMultiplier; 
-			redOffset = 255 - redOffset;
-			greenOffset = 255 - greenOffset;
-			blueOffset = 255 - blueOffset;
-        }
+
+		ct.redMultiplier = -ct.redMultiplier; 
+		ct.greenMultiplier = -ct.greenMultiplier; 
+		ct.blueMultiplier = -ct.blueMultiplier; 
+		ct.redOffset = 255 - ct.redOffset;
+		ct.greenOffset = 255 - ct.greenOffset;
+		ct.blueOffset = 255 - ct.blueOffset;
+
 		return ct.color;
     }
 

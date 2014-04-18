@@ -24,15 +24,10 @@
  
 package core.ui.managers;
 
-import core.ui.managers.ComponentFocusEvent;
-import core.ui.managers.DisplayObject;
-import core.ui.managers.Event;
-import core.ui.managers.EventDispatcher;
-import core.ui.managers.UIComponent;
-import nme.display.DisplayObject;
-import nme.display.Stage;
-import nme.events.Event;
-import nme.events.EventDispatcher;
+import flash.display.DisplayObject;
+import flash.display.Stage;
+import flash.events.Event;
+import flash.events.EventDispatcher;
 import core.ui.components.Application;
 import core.ui.components.UIComponent;
 import core.ui.events.ComponentFocusEvent;
@@ -41,7 +36,7 @@ class FocusManager extends EventDispatcher
 {
 	private static var instance : FocusManager;
 	
-	public static function getInstance() : FocusManager
+	public static function GetInstance() : FocusManager
 	{
 		return instance;
     }
@@ -55,17 +50,17 @@ class FocusManager extends EventDispatcher
 		instance = this;
     }
 	
-	public static function setFocus(value : UIComponent) : Void
+	public static function SetFocus(value : UIComponent) : Void
 	{
 		instance.setFocus(value);
     }
 	
-	public static function getCurrentFocus() : UIComponent
+	public static function GetCurrentFocus() : UIComponent
 	{
 		return instance.getCurrentFocus();
     }
 	
-	public static function isFocusedItemAChildOf(parent : UIComponent) : Bool
+	public static function IsFocusedItemAChildOf(parent : UIComponent) : Bool
 	{
 		return instance.isFocusedItemAChildOf(parent);
     }
@@ -113,7 +108,7 @@ class FocusManager extends EventDispatcher
 	{
 		if (focusedComponent == null) return false;
 		var currentItem : DisplayObject = focusedComponent;
-		while (currentItem) {
+		while (currentItem != null) {
 			if (currentItem == parent) return true;
 			currentItem = currentItem.parent;
         }

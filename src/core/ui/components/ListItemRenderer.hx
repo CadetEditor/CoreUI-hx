@@ -24,10 +24,9 @@
   
 package core.ui.components;
 
-import nme.events.Event;
-import nme.events.IEventDispatcher;
-import nme.text.TextFormatAlign;
-import flux.skins.ListItemRendererSkin;
+import flash.events.Event;
+import flash.events.IEventDispatcher;
+import flash.text.TextFormatAlign;
 import core.ui.components.IItemRenderer;
 
 class ListItemRenderer extends Button implements IItemRenderer

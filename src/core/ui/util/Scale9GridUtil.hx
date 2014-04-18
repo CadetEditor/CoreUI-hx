@@ -1,16 +1,14 @@
 package core.ui.util;
 
-import core.ui.util.Rectangle;
-import core.ui.util.Sprite;
-import nme.errors.Error;
-import nme.display.Sprite;
-import nme.geom.Rectangle;
+import flash.errors.Error;
+import flash.display.Sprite;
+import flash.geom.Rectangle;
 
 class Scale9GridUtil
 {
 	public static function setScale9Grid(skin : Sprite, grid : Rectangle) : Void
 	{
-		while (!skin.scale9Grid) {
+		while (skin.scale9Grid == null) {
 			try {
 				skin.scale9Grid = grid;
             } catch (e : Error){  

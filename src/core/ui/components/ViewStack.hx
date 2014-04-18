@@ -24,10 +24,9 @@
   
 package core.ui.components;
 
-import core.ui.components.IndexChangeEvent;
-import nme.errors.Error;
-import nme.display.DisplayObject;
-import nme.events.Event;
+import flash.errors.Error;
+import flash.display.DisplayObject;
+import flash.events.Event;
 import core.ui.events.IndexChangeEvent;
 
 @:meta(Event(type="flash.events.Event",name="change"))

@@ -24,15 +24,13 @@
  
 package core.ui.managers;
 
-import core.ui.managers.Dictionary;
-import core.ui.managers.Sprite;
-import nme.display.Bitmap;
-import nme.display.DisplayObject;
-import nme.display.Sprite;
-import nme.display.Stage;
-import nme.events.Event;
-import nme.events.EventDispatcher;
-import nme.utils.Dictionary;
+import flash.display.Bitmap;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
+import flash.display.Stage;
+import flash.events.Event;
+import flash.events.EventDispatcher;
+import flash.utils.Dictionary;
 import core.ui.components.Application;
 import core.ui.components.UIComponent;
 
@@ -60,18 +58,19 @@ class PopUpManager extends EventDispatcher
 		Reflect.setField(isModalTable, Std.string(popUp), modal);
 		app.popUpContainer.addChild(popUp);
 		if (modal) {
-			if (modalCover.parent) {
+			if (modalCover.parent != null) {
 				modalCover.parent.removeChild(modalCover);
             }
 			var index : Int = app.popUpContainer.getChildIndex(popUp);
 			app.popUpContainer.addChildAt(modalCover, index);
 			updateModalCover();
 			if (Std.is(popUp, UIComponent) && cast((popUp), UIComponent).focusEnabled) {
-				FocusManager.setFocus(cast((popUp), UIComponent));
+				FocusManager.SetFocus(cast((popUp), UIComponent));
             }
         }
 		if (center) {
-			popUp.x = (app.stage.stageWidth - popUp.width) >> 1;popUp.y = (app.stage.stageHeight - popUp.height) >> 1;
+			popUp.x = Std.int(app.stage.stageWidth - popUp.width) >> 1;
+			popUp.y = Std.int(app.stage.stageHeight - popUp.height) >> 1;
         }        
 		// Limit to stage
         else {
@@ -94,14 +93,14 @@ class PopUpManager extends EventDispatcher
 			var isModal : Bool = Reflect.field(isModalTable, Std.string(child));
 			if (isModal) {
 				stillModal = true;
-				if (!modalCover.stage) {
+				if (modalCover.stage == null) {
 					app.popUpContainer.addChildAt(modalCover, i);
                 }
 				break;
             }
         }
 		
-		if (!stillModal && modalCover.stage) {
+		if (stillModal == null && modalCover.stage != null) {
 			app.popUpContainer.removeChild(modalCover);
         }
 		modal = stillModal;dispatchEvent(new Event(Event.CHANGE));
@@ -121,12 +120,12 @@ class PopUpManager extends EventDispatcher
 		modalCover.graphics.drawRect(0, 0, app.stage.stageWidth, app.stage.stageHeight);
     }
 	
-	public static function addPopUp(popUp : DisplayObject, modal : Bool = false, center : Bool = true) : Void
+	public static function AddPopUp(popUp : DisplayObject, modal : Bool = false, center : Bool = true) : Void
 	{
 		instance.addPopUp(popUp, modal, center);
     }
 	
-	public static function removePopUp(popUp : DisplayObject) : Void
+	public static function RemovePopUp(popUp : DisplayObject) : Void
 	{
 		instance.removePopUp(popUp);
     }

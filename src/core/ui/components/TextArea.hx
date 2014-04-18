@@ -24,22 +24,20 @@
   
 package core.ui.components;
 
-import core.ui.components.TextAreaSkin;
 import core.ui.components.UIComponent;
-import nme.display.Sprite;
-import nme.events.Event;
-import nme.events.FocusEvent;
-import nme.events.TextEvent;
-import nme.text.TextField;
-import nme.text.TextFieldAutoSize;
-import nme.text.TextFieldType;
-import nme.text.TextFormat;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.FocusEvent;
+import flash.events.TextEvent;
+import flash.text.TextField;
+import flash.text.TextFieldAutoSize;
+import flash.text.TextFieldType;
+import flash.text.TextFormat;
 import core.ui.CoreUI;
 import core.ui.events.ItemEditorEvent;
 import core.ui.managers.FocusManager;
 import core.ui.util.Scale9GridUtil;
 import core.ui.util.SelectionColor;
-import flux.skins.TextAreaSkin;
 
 class TextArea extends UIComponent
 {

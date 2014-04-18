@@ -2,9 +2,7 @@ package core.ui.data;
 
 import core.ui.data.IPropertyInspectorDataDescriptor;
 import core.ui.data.PropertyInspectorField;
-import nme.utils.Proxy;
-import nme.utils.DescribeType;
-import core.data.ArrayCollection;
+import flash.utils.Proxy;
 
 class DefaultPropertyInspectorDataDescriptor implements IPropertyInspectorDataDescriptor
 {

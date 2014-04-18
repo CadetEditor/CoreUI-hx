@@ -25,9 +25,9 @@
 package core.ui.layouts;
 
 import core.ui.layouts.ILayout;
-import nme.display.DisplayObject;
-import nme.display.DisplayObjectContainer;
-import nme.geom.Rectangle;
+import flash.display.DisplayObject;
+import flash.display.DisplayObjectContainer;
+import flash.geom.Rectangle;
 import core.ui.components.UIComponent;
 
 class HorizontalLayout implements ILayout
@@ -66,93 +66,95 @@ class HorizontalLayout implements ILayout
 				}
 				if (Math.isNaN(component.percentWidth)) {
 					component.validateNow();
-					totalExplicitSize += child.width;
+					totalExplicitSize += Std.int(child.width);
 				} else {
 					numProportionalChildren++;
 				}
 			}
+			
+			var proportionalSpaceRemaining : Int = (Std.int(visibleWidth) - (spacing * (content.numChildren - 1))) - totalExplicitSize;
+			proportionalSlotSize = proportionalSpaceRemaining / numProportionalChildren;
         }
 		
-		var proportionalSpaceRemaining : Int = (visibleWidth - (spacing * (content.numChildren - 1))) - totalExplicitSize;proportionalSlotSize = proportionalSpaceRemaining / numProportionalChildren;
+		// Because components have integer x/y width/height properties, we need to track how much of the real 
+		// fractional value we're losing along the way. We then append this to the next item to ensure
+		// proportional values sum up to the correct value.
+
+		var errorAccumulator : Float = 0;
+		
+		for (i in 0...content.numChildren) {
+			var child = content.getChildAt(i);
+			var component = try cast(child, UIComponent) catch (e:Dynamic) null;
+			var isProportionalWidth : Bool = false;
+			var isProportionalHeight : Bool = false;
+			if (component != null) {
+				if (component.excludeFromLayout) {
+					continue;
+				}
+				isProportionalWidth = allowProportional && Math.isNaN(component.percentWidth) == false;
+				isProportionalHeight = allowProportional && Math.isNaN(component.percentHeight) == false;
+			}
+
+			switch (verticalAlign)
+			{
+				case LayoutAlign.TOP:
+					child.y = 0;
+					if (isProportionalHeight) {
+						child.height = (visibleHeight - child.y) * component.percentHeight * 0.01;
+					}
+				case LayoutAlign.BOTTOM:
+					if (isProportionalHeight) {
+						child.height = visibleHeight * component.percentHeight * 0.01;
+					}
+					child.y = visibleHeight - child.height;
+				case LayoutAlign.CENTRE:
+					if (isProportionalHeight) {
+						child.height = visibleHeight * component.percentHeight * 0.01;
+					}
+					child.y = (visibleHeight - child.height) * 0.5;
+				default:
+					if (isProportionalHeight) {
+						child.height = (visibleHeight - child.y) * component.percentHeight * 0.01;
+					}
+			}
+			
+			if (isProportionalWidth) {
+				var fractionalValue : Float = proportionalSlotSize * component.percentWidth * 0.01 + errorAccumulator;
+				var roundedValue : Int = Math.round(fractionalValue);
+				child.width = roundedValue;
+				errorAccumulator = fractionalValue - roundedValue;
+			}
+				
+			child.x = pos;
+			
+			if (component != null) {
+				component.validateNow();
+			}
+			
+			pos += Std.int(child.width) + spacing;
+			contentSize.width = child.x + child.width > (contentSize.width) ? child.x + child.width : contentSize.width;
+			contentSize.height = child.y + child.height > (contentSize.height) ? child.y + child.height : contentSize.height;
+		}
+			
+			
+		if (horizontalAlign != LayoutAlign.NONE) {
+			var shift : Int = 0;
+			
+			switch (horizontalAlign)
+			{
+				case LayoutAlign.RIGHT:
+					shift = Std.int(visibleWidth) - Std.int(contentSize.width);
+				case LayoutAlign.CENTRE:
+					shift = (Std.int(visibleWidth) - Std.int(contentSize.width)) >> 1;
+			}
+				
+			for (i in 0...content.numChildren) {
+				var child = cast((content.getChildAt(i)), UIComponent);
+				child.x += shift;
+			}
+		}
+		
+		return contentSize;
     }  
 	
-	// Because components have integer x/y width/height properties, we need to track how much of the real 
-	// fractional value we're losing along the way. We then append this to the next item to ensure
-	// proportional values sum up to the correct value.
-
-	var errorAccumulator : Float = 0;
-	
-	for (content.numChildren) {
-		child = content.getChildAt(i);
-		component = try cast(child, UIComponent) catch (e:Dynamic) null;
-		var isProportionalWidth : Bool = false;
-		var isProportionalHeight : Bool = false;
-		if (component) {
-			if (component.excludeFromLayout) {
-				continue;
-            }
-			isProportionalWidth = allowProportional && Math.isNaN(component.percentWidth) == false;
-			isProportionalHeight = allowProportional && Math.isNaN(component.percentHeight) == false;
-        }
-
-        switch (verticalAlign)
-        {
-			case LayoutAlign.TOP:
-				child.y = 0;
-				if (isProportionalHeight) {
-					child.height = (visibleHeight - child.y) * component.percentHeight * 0.01;
-                }
-			case LayoutAlign.BOTTOM:
-				if (isProportionalHeight) {
-					child.height = visibleHeight * component.percentHeight * 0.01;
-                }
-				child.y = visibleHeight - child.height;
-			case LayoutAlign.CENTRE:
-				if (isProportionalHeight) {
-					child.height = visibleHeight * component.percentHeight * 0.01;
-                }
-				child.y = (visibleHeight - child.height) * 0.5;
-			default:
-				if (isProportionalHeight) {
-					child.height = (visibleHeight - child.y) * component.percentHeight * 0.01;
-                }
-        }
-		
-		if (isProportionalWidth) {
-			var fractionalValue : Float = proportionalSlotSize * component.percentWidth * 0.01 + errorAccumulator;
-			var roundedValue : Int = Math.round(fractionalValue);
-			child.width = roundedValue;
-			errorAccumulator = fractionalValue - roundedValue;
-        }
-			
-		child.x = pos;
-		
-		if (component) {
-			component.validateNow();
-        }
-		
-		pos += child.width + spacing;
-		contentSize.width = child.x + child.width > (contentSize.width) ? child.x + child.width : contentSize.width;
-		contentSize.height = child.y + child.height > (contentSize.height) ? child.y + child.height : contentSize.height;
-    }
-		
-		
-	if (horizontalAlign != LayoutAlign.NONE) {
-		var shift : Int = 0;
-        
-		switch (horizontalAlign)
-        {
-			case LayoutAlign.RIGHT:
-				shift = visibleWidth - contentSize.width;
-			case LayoutAlign.CENTRE:
-				shift = (visibleWidth - contentSize.width) >> 1;
-        }
-			
-		for (content.numChildren) {
-			child = cast((content.getChildAt(i)), UIComponent);
-			child.x += shift;
-        }
-    }
-	
-	return contentSize;
 }

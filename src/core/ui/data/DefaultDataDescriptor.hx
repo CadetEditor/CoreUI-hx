@@ -24,9 +24,7 @@
 
 package core.ui.data;
 
-import core.ui.data.ArrayCollection;
 import core.ui.data.IDataDescriptor;
-import core.data.ArrayCollection;
 
 class DefaultDataDescriptor implements IDataDescriptor
 {

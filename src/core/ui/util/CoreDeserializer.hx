@@ -24,10 +24,7 @@
  
 package core.ui.util;
 
-import core.ui.util.ILayout;
-import core.ui.util.LayoutType;
-import core.ui.util.UIComponent;
-import nme.errors.Error;
+import flash.errors.Error;
 import core.ui.components.*;
 import core.ui.layouts.*; 
 

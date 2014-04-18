@@ -22,22 +22,14 @@
  * THE SOFTWARE.
  */
 
- package core.ui.components;
+package core.ui.components;
 
-import core.ui.components.AlertEvent;
-import core.ui.components.Button;
-import core.ui.components.Image;
-import core.ui.components.Panel;
-import core.ui.components.Rectangle;
-import core.ui.components.SelectEvent;
-import core.ui.components.TextField;
-import core.ui.components.TextFormat;
-import nme.events.MouseEvent;
-import nme.geom.Rectangle;
-import nme.text.TextField;
-import nme.text.TextFieldAutoSize;
-import nme.text.TextFormat;
-import nme.text.TextFormatAlign;
+import flash.events.MouseEvent;
+import flash.geom.Rectangle;
+import flash.text.TextField;
+import flash.text.TextFieldAutoSize;
+import flash.text.TextFormat;
+import flash.text.TextFormatAlign;
 import core.ui.events.AlertEvent;
 import core.ui.events.SelectEvent;
 import core.ui.layouts.HorizontalLayout;
@@ -49,14 +41,18 @@ class Alert extends Panel
 {
     public var text(get, set) : String;
     public var mainIcon(get, set) : Dynamic;
+	
 	////////////////////////////////////////////////    
 	// Static methods    
 	////////////////////////////////////////////////  
-	public static function show(title : String, text : String, buttons : Array<Dynamic>, defaultButton : String = null, icon : Class<Dynamic> = null, modal : Bool = true, closeHandler : Function = null) : Void
+	
+	public static function show(title : String, text : String, buttons : Array<Dynamic>, defaultButton : String = null, icon : Class<Dynamic> = null, modal : Bool = true, closeHandler : Dynamic = null) : Void
 	{
 		var alert : Alert = new Alert();
-		alert.label = title; alert.text = text;
+		alert.label = title; 
+		alert.text = text;
 		alert.mainIcon = icon;
+		
 		if (closeHandler != null) {
 			alert.addEventListener(AlertEvent.ALERT_CLOSE, closeHandler);
         }
@@ -65,18 +61,21 @@ class Alert extends Panel
 		
 		for (i in 0...buttons.length) {
 			var btn : Button = new Button();
-			btn.label = buttons[i]; alert.controlBar.addChild(btn);
+			btn.label = buttons[i]; 
+			alert.controlBar.addChild(btn);
 			if (btn.label == defaultButton) {
 				alert.defaultButton = btn;
             }
         }
 		
 		alert.validateNow();
-		PopUpManager.addPopUp(alert, modal, true);
+		PopUpManager.AddPopUp(alert, modal, true);
     }  
 	
 	// Child elements  
-	private var textField : TextField; private var mainIconImage : Image;
+	private var textField : TextField; 
+	private var mainIconImage : Image;
+	
 	public function new()
     {
         super();
@@ -85,6 +84,7 @@ class Alert extends Panel
 	////////////////////////////////////////////////    
 	// Protected methods    
 	////////////////////////////////////////////////  
+	
 	override private function init() : Void {
 		super.init();
 		showCloseButton = false;
@@ -116,8 +116,8 @@ class Alert extends Panel
 		_height = _titleBarHeight + textField.height + 80; 
 		super.validate();
 		layoutRect = getChildrenLayoutArea();
-		textField.y = layoutRect.y + ((layoutRect.height - textField.height) >> 1);
-		mainIconImage.y = layoutRect.y + ((layoutRect.height - mainIconImage.height) >> 1);
+		textField.y = layoutRect.y + (Std.int(layoutRect.height - textField.height) >> 1);
+		mainIconImage.y = layoutRect.y + (Std.int(layoutRect.height - mainIconImage.height) >> 1);
     }  
 	
 	////////////////////////////////////////////////    
@@ -130,7 +130,7 @@ class Alert extends Panel
 		
 		if (button == null) return;
 		
-		PopUpManager.removePopUp(this);
+		PopUpManager.RemovePopUp(this);
 		dispatchEvent(new AlertEvent(AlertEvent.ALERT_CLOSE, button.label));
     }  
 	
@@ -138,26 +138,26 @@ class Alert extends Panel
 	// Getters/Setters    
 	////////////////////////////////////////////////  
 	
-	private function set_Text(value : String) : String
+	private function set_text(value : String) : String
 	{
 		textField.text = value;
         return value;
     }
 	
-	private function get_Text() : String
+	private function get_text() : String
 	{
 		return textField.text;
     }
 	
-	private function set_MainIcon(value : Dynamic) : Dynamic
+	private function set_mainIcon(value : Dynamic) : Dynamic
 	{
-		if (value == mainIconImage.source) return;
+		if (value != mainIconImage.source) return null;
 		mainIconImage.source = value;
 		invalidate();
         return value;
     }
 	
-	private function get_MainIcon() : Dynamic
+	private function get_mainIcon() : Dynamic
 	{
 		return mainIconImage.source;
     }

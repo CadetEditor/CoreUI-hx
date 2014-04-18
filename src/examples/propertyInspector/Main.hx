@@ -1,18 +1,23 @@
-  /**
- * IUIComponent.as
+/**
+ * PropertyInspectorExample.as
+ *
+ * This example shows how to use a Class with [Inspectable] metadata as a
+ * dataprovider for the 'PropertyInspector' component.
+ * This component will list the inspectable properties of the object, and 
+ * allows editing of these properties via itemEditor components.
  *
  * Copyright (c) 2011 Jonathan Pace
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,26 +26,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */  
-  
-package core.ui.components;
 
-import flash.events.IEventDispatcher;
+package examples.propertyInspector;
+ 
+import core.ui.components.Application;
+import core.ui.components.PropertyInspector;
 
-interface IUIComponent extends IEventDispatcher
+@:meta(SWF(width="400",height="600",backgroundColor="0x101010",frameRate="60"))
+class Main extends Application
 {
-    var x(get, set) : Float;    
-	var y(get, set) : Float;    
-	var label(get, set) : String;    
-	var toolTip(get, set) : String;    
-	var icon(get, set) : Dynamic;    
-	var width(get, set) : Float;    
-	var height(get, set) : Float;    
-	var enabled(get, set) : Bool;    
-	var percentWidth(get, set) : Float;    
-	var percentHeight(get, set) : Float;    
-	var excludeFromLayout(get, set) : Bool;    
-	var resizeToContentWidth(get, set) : Bool;    
-	var resizeToContentHeight(get, set) : Bool;
-	function validateNow() : Void;
-	function isInvalid() : Bool;
+	private var propertyInspector : PropertyInspector;
+	
+	public function new()
+    {
+        super();
+    }
+	
+	override private function init() : Void
+	{
+		super.init();
+		padding = 10;
+		propertyInspector = new PropertyInspector();
+		propertyInspector.percentWidth = propertyInspector.percentHeight = 100;
+		addChild(propertyInspector);
+		var inspectableObject : InspectableObject = new InspectableObject();
+		propertyInspector.dataProvider = new ArrayCollection([inspectableObject]);
+    }
 }

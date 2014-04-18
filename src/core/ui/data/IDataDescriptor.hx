@@ -24,8 +24,6 @@
   
 package core.ui.data;
 
-import core.data.ArrayCollection;
-
 interface IDataDescriptor
 {
 	function getLabel(data : Dynamic) : String;

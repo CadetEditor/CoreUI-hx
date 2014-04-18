@@ -25,9 +25,9 @@
 package core.ui.components;
 
 import core.ui.components.TreeItemRendererOpenIconSkin;
-import nme.display.MovieClip;
-import nme.events.Event;
-import nme.events.MouseEvent;
+import flash.display.MovieClip;
+import flash.events.Event;
+import flash.events.MouseEvent;
 import flux.skins.TreeItemRendererOpenIconSkin;
 
 class TreeItemRenderer extends ListItemRenderer implements ITreeItemRenderer

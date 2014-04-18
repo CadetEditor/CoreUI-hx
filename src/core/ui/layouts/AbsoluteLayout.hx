@@ -24,14 +24,9 @@
 
 package core.ui.layouts;
 
-import core.ui.layouts.DisplayObject;
-import core.ui.layouts.DisplayObjectContainer;
-import core.ui.layouts.ILayout;
-import core.ui.layouts.Rectangle;
-import core.ui.layouts.UIComponent;
-import nme.display.DisplayObject;
-import nme.display.DisplayObjectContainer;
-import nme.geom.Rectangle;
+import flash.display.DisplayObject;
+import flash.display.DisplayObjectContainer;
+import flash.geom.Rectangle;
 import core.ui.components.UIComponent;
 
 class AbsoluteLayout implements ILayout

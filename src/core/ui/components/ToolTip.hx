@@ -24,14 +24,11 @@
   
 package core.ui.components;
 
-import core.ui.components.ToolTipSkin;
-import core.ui.components.UIComponent;
-import nme.display.Sprite;
-import nme.text.TextField;
-import nme.text.TextFieldAutoSize;
+import flash.display.Sprite;
+import flash.text.TextField;
+import flash.text.TextFieldAutoSize;
 import core.ui.CoreUI;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.ToolTipSkin;
 
 class ToolTip extends UIComponent
 {
@@ -68,7 +65,7 @@ class ToolTip extends UIComponent
 	override private function init() : Void
 	{
 		skin = new ToolTipSkin();
-		if (!skin.scale9Grid) {
+		if (skin.scale9Grid == null) {
 			Scale9GridUtil.setScale9Grid(skin, CoreUI.defaultToolTipSkinScale9Grid);
         }
 		skin.height = _height;
@@ -93,14 +90,14 @@ class ToolTip extends UIComponent
 	// Getters/Setters    
 	////////////////////////////////////////////////  
 	
-	private function set_Text(value : String) : String
+	private function set_text(value : String) : String
 	{
 		textField.text = value;
 		invalidate();
         return value;
     }
 	
-	private function get_Text() : String
+	private function get_text() : String
 	{
 		return textField.text;
     }

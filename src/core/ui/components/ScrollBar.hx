@@ -24,19 +24,14 @@
   
 package core.ui.components;
 
-import core.ui.components.ScrollBarTrackSkin;
 import core.ui.components.UIComponent;
-import nme.display.Sprite;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import nme.events.TimerEvent;
-import nme.utils.Timer;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.events.TimerEvent;
+import flash.utils.Timer;
 import core.ui.CoreUI;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.ScrollBarDownButtonSkin;
-import flux.skins.ScrollBarThumbSkin;
-import flux.skins.ScrollBarTrackSkin;
-import flux.skins.ScrollBarUpButtonSkin;
 
 class ScrollBar extends UIComponent
 {

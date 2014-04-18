@@ -24,15 +24,11 @@
 
 package core.ui.managers;
 
-import core.ui.managers.Application;
-import core.ui.managers.Image;
-import core.ui.managers.MouseEvent;
-import nme.display.Stage;
-import nme.events.MouseEvent;
-import nme.ui.Mouse;
+import flash.display.Stage;
+import flash.events.MouseEvent;
+import flash.ui.Mouse;
 import core.ui.components.Application;
 import core.ui.components.Image;
-import flux.cursors.BusyCursor;
 
 class CursorManager
 {
@@ -50,7 +46,7 @@ class CursorManager
 		cursor = new Image();
     }
 	
-	public static function setCursor(source : Class<Dynamic>) : Void
+	public static function SetCursor(source : Class<Dynamic>) : Void
 	{
 		instance.setCursor(source);
     }
@@ -60,7 +56,7 @@ class CursorManager
 		cursor.source = source;
 		
 		if (source == null) {
-			if (cursor.stage) { 
+			if (cursor.stage != null) { 
 				app.cursorContainer.removeChild(cursor);
 				app.stage.removeEventListener(MouseEvent.MOUSE_MOVE, mouseMoveHandler, true);
 				Mouse.show();
@@ -83,8 +79,8 @@ class CursorManager
 		event.updateAfterEvent();
     }
     
-	private static var init = {
-        BusyCursor;
-    }
+	//private static var init = {
+        //BusyCursor;
+    //}
 
 }

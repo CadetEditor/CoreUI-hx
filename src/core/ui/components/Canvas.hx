@@ -26,12 +26,10 @@
   
 package core.ui.components;
 
-import core.ui.components.CanvasSkin;
 import core.ui.components.Container;
-import nme.display.Sprite;
+import flash.display.Sprite;
 import core.ui.CoreUI;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.CanvasSkin;
 
 class Canvas extends Container
 {  
@@ -47,7 +45,7 @@ class Canvas extends Container
 	{
 		background = new CanvasSkin();
 		
-		if (!background.scale9Grid) {
+		if (background.scale9Grid == null) {
 			Scale9GridUtil.setScale9Grid(background, CoreUI.defaultCanvasSkinScale9Grid);
         }
 		

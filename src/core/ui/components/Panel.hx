@@ -26,16 +26,14 @@
   
 package core.ui.components;
 
-import core.ui.components.ComponentFocusEvent;
-import core.ui.components.PanelSkin;
-import nme.display.MovieClip;
-import nme.events.Event;
-import nme.events.KeyboardEvent;
-import nme.events.MouseEvent;
-import nme.geom.Point;
-import nme.geom.Rectangle;
-import nme.text.TextField;
-import nme.ui.Keyboard;
+import flash.display.MovieClip;
+import flash.events.Event;
+import flash.events.KeyboardEvent;
+import flash.events.MouseEvent;
+import flash.geom.Point;
+import flash.geom.Rectangle;
+import flash.text.TextField;
+import flash.ui.Keyboard;
 import core.ui.CoreUI;
 import core.ui.events.ComponentFocusEvent;
 import core.ui.events.SelectEvent;
@@ -43,8 +41,6 @@ import core.ui.layouts.HorizontalLayout;
 import core.ui.layouts.LayoutAlign;
 import core.ui.managers.FocusManager;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.PanelCloseBtnSkin;
-import flux.skins.PanelSkin;
 
 @:meta(Event(type="flash.events.Event",name="close"))
 class Panel extends Container
@@ -81,11 +77,11 @@ class Panel extends Container
 	{
 		border = new PanelSkin();
 		
-		if (!border.scale9Grid) {
+		if (border.scale9Grid == null) {
 			Scale9GridUtil.setScale9Grid(border, CoreUI.defaultPanelSkinScale9Grid);
         }
 		
-		_titleBarHeight = (border.scale9Grid) ? border.scale9Grid.top : 0;
+		_titleBarHeight = (border.scale9Grid != null) ? Std.int(border.scale9Grid.top) : 0;
 		_minHeight = _titleBarHeight;
 		addRawChild(border);
 		super.init();
@@ -105,7 +101,7 @@ class Panel extends Container
 		border.addEventListener(MouseEvent.MOUSE_DOWN, mouseDownBackgroundHandler);
 		showCloseButton = false;
 		padding = 4;
-		FocusManager.getInstance().addEventListener(ComponentFocusEvent.COMPONENT_FOCUS_IN, componentFocusInHandler);
+		FocusManager.GetInstance().addEventListener(ComponentFocusEvent.COMPONENT_FOCUS_IN, componentFocusInHandler);
 		addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 		addEventListener(Event.REMOVED_FROM_STAGE, removedFromStageHandler);
     }
@@ -117,7 +113,7 @@ class Panel extends Container
 		super.validate();
 		iconImage.source = _icon;
 		iconImage.validateNow();
-		iconImage.y = (_titleBarHeight - iconImage.height) >> 1;
+		iconImage.y = Std.int(_titleBarHeight - iconImage.height) >> 1;
 		iconImage.x = iconImage.y;
 		_controlBar.resizeToContentWidth = false;
 		_controlBar.resizeToContentHeight = false;
@@ -129,9 +125,9 @@ class Panel extends Container
 		titleField.width = _width - (_paddingLeft + _paddingRight);
 		titleField.text = _label; 
 		titleField.height = Math.min(titleField.textHeight + 4, _height);
-		titleField.y = (_titleBarHeight - (titleField.height)) >> 1;
+		titleField.y = Std.int(_titleBarHeight - (titleField.height)) >> 1;
 		titleField.x = iconImage.width > (0) ? iconImage.x + iconImage.width + 6 : titleField.y;
-		closeBtn.y = (_titleBarHeight - closeBtn.height) >> 1;
+		closeBtn.y = Std.int(_titleBarHeight - closeBtn.height) >> 1;
 		closeBtn.x = _width - closeBtn.width - closeBtn.y;
     }
 	
@@ -146,7 +142,7 @@ class Panel extends Container
 	
 	public function componentFocusInHandler(event : ComponentFocusEvent) : Void
 	{
-		if (FocusManager.isFocusedItemAChildOf(this)) {
+		if (FocusManager.IsFocusedItemAChildOf(this)) {
 			border.gotoAndPlay("Active");
         } else {
 			border.gotoAndPlay("Default");
@@ -171,7 +167,7 @@ class Panel extends Container
 	{
 		if (_defaultButton == null) return;
 		
-		if (FocusManager.isFocusedItemAChildOf(this) == false) return;
+		if (FocusManager.IsFocusedItemAChildOf(this) == false) return;
 		if (event.keyCode == Keyboard.ENTER) {
 			_defaultButton.dispatchEvent(new SelectEvent(SelectEvent.SELECT, null, true));
         }

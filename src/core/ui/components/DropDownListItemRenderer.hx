@@ -23,10 +23,9 @@
 
  */  
 
- package core.ui.components;
+package core.ui.components;
 
 import core.ui.components.ListItemRenderer;
-import flux.skins.DropDownListItemRendererSkin;
 
 class DropDownListItemRenderer extends ListItemRenderer
 {

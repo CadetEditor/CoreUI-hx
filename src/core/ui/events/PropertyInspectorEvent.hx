@@ -24,7 +24,7 @@
    
 package core.ui.events;
 
-import nme.events.Event;
+import flash.events.Event;
 
 class PropertyInspectorEvent extends Event
 {

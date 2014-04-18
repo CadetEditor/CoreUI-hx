@@ -24,15 +24,12 @@
   
 package core.ui.components;
 
-import core.ui.components.Bitmap;
-import core.ui.components.ImgClass;
-import core.ui.components.Source;
-import core.ui.components.UIComponent;
-import nme.errors.Error;
-import nme.display.Bitmap;
-import nme.display.BitmapData;
-import nme.display.DisplayObject;
-import nme.geom.Rectangle;
+import flash.display.PixelSnapping;
+import flash.errors.Error;
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+import flash.display.DisplayObject;
+import flash.geom.Rectangle;
 import core.ui.events.ResizeEvent;
 
 class Image extends UIComponent
@@ -81,7 +78,7 @@ class Image extends UIComponent
 		if (Std.is(_source, DisplayObject)) {
 			child = cast((_source), DisplayObject);
         } else if (Std.is(_source, BitmapData)) {
-			child = new Bitmap(cast((_source), BitmapData), "auto", true);
+			child = new Bitmap(cast(_source, BitmapData), PixelSnapping.AUTO, true);
         } else {
 			try {
 				var instance : Dynamic = new Source();
@@ -141,53 +138,53 @@ class Image extends UIComponent
 		dispatchEvent(new ResizeEvent(ResizeEvent.RESIZE));
     }
 	
-	private function set_Source(value : Dynamic) : Dynamic
+	private function set_source(value : Dynamic) : Dynamic
 	{
-		if (value == _source) return;
+		if (value == _source) return null;
 		_source = value;
 		invalidate();
         return value;
     }
 	
-	private function get_Source() : Dynamic
+	private function get_source() : Dynamic
 	{
 		return _source;
     }
 	
-	private function get_ScaleMode() : String
+	private function get_scaleMode() : String
 	{
 		return _scaleMode;
     }
 	
-	private function set_ScaleMode(value : String) : String
+	private function set_scaleMode(value : String) : String
 	{
-		if (value == _scaleMode) return;
+		if (value == _scaleMode) return null;
 		invalidate();
 		_scaleMode = value;
         return value;
     }
 	
-	private function get_MaxScale() : Float
+	private function get_maxScale() : Float
 	{
 		return _maxScale;
     }
 	
-	private function set_MaxScale(value : Float) : Float
+	private function set_maxScale(value : Float) : Float
 	{
-		if (_maxScale == value) return;
+		if (_maxScale == value) return null;
 		invalidate();
 		_maxScale = value;
         return value;
     }
 	
-	private function get_MinScale() : Float
+	private function get_minScale() : Float
 	{
 		return _minScale;
     }
 	
-	private function set_MinScale(value : Float) : Float
+	private function set_minScale(value : Float) : Float
 	{
-		if (_minScale == value) return;
+		if (_minScale == value) return null;
 		invalidate();
 		_minScale = value;
         return value;

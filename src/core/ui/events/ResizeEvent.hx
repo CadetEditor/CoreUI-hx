@@ -1,6 +1,6 @@
 package core.ui.events;
 
-import nme.events.Event;
+import flash.events.Event;
 
 class ResizeEvent extends Event
 {
@@ -8,7 +8,7 @@ class ResizeEvent extends Event
 	public var oldHeight : Float;
 	public var oldWidth : Float;
 	
-	public function new(type : String, bubbles : Bool = false, cancelable : Bool = false, oldWidth : Float = NaN, oldHeight : Float = NaN)
+	public function new(type : String, bubbles : Bool = false, cancelable : Bool = false, oldWidth : Float, oldHeight : Float)
     {
 		this.oldWidth = oldWidth;
 		this.oldHeight = oldHeight;

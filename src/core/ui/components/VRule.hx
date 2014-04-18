@@ -25,7 +25,7 @@
 package core.ui.components;
 
 import core.ui.components.VRuleSkin;
-import nme.display.Sprite;
+import flash.display.Sprite;
 import flux.skins.VRuleSkin;
 
 class VRule extends UIComponent

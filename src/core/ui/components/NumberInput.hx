@@ -27,11 +27,11 @@ package core.ui.components;
 import core.ui.components.KeyboardEvent;
 import core.ui.components.TextEvent;
 import core.ui.components.TextInput;
-import nme.events.Event;
-import nme.events.FocusEvent;
-import nme.events.KeyboardEvent;
-import nme.events.TextEvent;
-import nme.ui.Keyboard;
+import flash.events.Event;
+import flash.events.FocusEvent;
+import flash.events.KeyboardEvent;
+import flash.events.TextEvent;
+import flash.ui.Keyboard;
 import core.ui.events.ItemEditorEvent;
 
 class NumberInput extends TextInput

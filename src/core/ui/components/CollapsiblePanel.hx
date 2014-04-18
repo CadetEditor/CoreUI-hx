@@ -28,8 +28,8 @@ package core.ui.components;
 
 import core.ui.components.Panel;
 import core.ui.components.ResizeEvent;
-import nme.events.Event;
-import nme.events.MouseEvent;
+import flash.events.Event;
+import flash.events.MouseEvent;
 import core.ui.events.ResizeEvent;
 
 class CollapsiblePanel extends Panel

@@ -1,12 +1,18 @@
 package ;
 
+//import core.ui.components.Canvas;
+
+import examples.editor.Main;
+import examples.propertyInspector.Main;
+import examples.sandbox.Main;
+
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.Lib;
 
 class Main extends Sprite 
 {
-	var inited:Bool;
+	var inited: Bool;
 
 	/* ENTRY POINT */
 	

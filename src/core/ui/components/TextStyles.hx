@@ -27,9 +27,9 @@
   
 package core.ui.components;
 
-import nme.text.AntiAliasType;
-import nme.text.TextField;
-import nme.text.TextFormat;
+import flash.text.AntiAliasType;
+import flash.text.TextField;
+import flash.text.TextFormat;
 
 class TextStyles
 {  

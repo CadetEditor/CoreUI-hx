@@ -24,22 +24,17 @@
   
 package core.ui.components;
 
-import core.ui.components.ArrayCollection;
-import core.ui.components.DropDownMenuSkin;
-import core.ui.components.ListEvent;
 import core.ui.components.UIComponent;
-import nme.display.MovieClip;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import nme.geom.Point;
-import nme.text.TextField;
-import core.data.ArrayCollection;
+import flash.display.MovieClip;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.geom.Point;
+import flash.text.TextField;
 import core.ui.CoreUI;
 import core.ui.components.DropDownListItemRenderer;
 import core.ui.events.ItemEditorEvent;
 import core.ui.events.ListEvent;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.DropDownMenuSkin;
 
 @:meta(Event(type="flash.events.Event",name="change"))
 class DropDownMenu extends UIComponent

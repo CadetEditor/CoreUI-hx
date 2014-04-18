@@ -24,12 +24,10 @@
   
 package core.ui.components;
 
-import nme.events.Event;
-import nme.events.MouseEvent;
+import flash.events.Event;
+import flash.events.MouseEvent;
 import core.ui.CoreUI;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.TabNavigatorTabCloseBtnSkin;
-import flux.skins.TabNavigatorTabSkin;
 
 class TabNavigatorTab extends Button
 {

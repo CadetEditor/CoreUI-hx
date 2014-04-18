@@ -24,13 +24,10 @@
   
 package core.ui.components;
 
-import core.ui.components.MenuBarSkin;
 import core.ui.components.UIComponent;
-import nme.display.Sprite;
-import nme.events.MouseEvent;
-import nme.geom.Point;
-import core.data.ArrayCollection;
-import core.events.ArrayCollectionEvent;
+import flash.display.Sprite;
+import flash.events.MouseEvent;
+import flash.geom.Point;
 import core.ui.CoreUI;
 import core.ui.components.IItemRenderer;
 import core.ui.data.DefaultDataDescriptor;
@@ -38,8 +35,6 @@ import core.ui.data.IDataDescriptor;
 import core.ui.events.SelectEvent;
 import core.ui.layouts.HorizontalLayout;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.MenuBarButtonSkin;
-import flux.skins.MenuBarSkin;
 
 @:meta(Event(type="core.ui.events.SelectEvent",name="select"))
 class MenuBar extends UIComponent

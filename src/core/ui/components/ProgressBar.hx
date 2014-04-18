@@ -24,17 +24,11 @@
   
 package core.ui.components;
 
-import core.ui.components.ProgressBarBorderSkin;
-import core.ui.components.ProgressBarIndeterminateSkin;
-import core.ui.components.ProgressBarSkin;
 import core.ui.components.UIComponent;
-import nme.display.MovieClip;
-import nme.display.Sprite;
+import flash.display.MovieClip;
+import flash.display.Sprite;
 import core.ui.CoreUI;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.ProgressBarBorderSkin;
-import flux.skins.ProgressBarIndeterminateSkin;
-import flux.skins.ProgressBarSkin;
 
 class ProgressBar extends UIComponent
 {

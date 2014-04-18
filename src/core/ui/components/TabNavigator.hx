@@ -24,16 +24,13 @@
   
 package core.ui.components;
 
-import core.ui.components.TabNavigatorEvent;
-import core.ui.components.TabNavigatorSkin;
 import core.ui.components.TabNavigatorTab;
 import core.ui.components.ViewStack;
-import nme.display.DisplayObject;
-import nme.display.Sprite;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import nme.geom.Rectangle;
-import core.events.PropertyChangeEvent;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.geom.Rectangle;
 import core.ui.CoreUI;
 import core.ui.events.TabNavigatorEvent;
 import core.ui.layouts.HorizontalLayout;
@@ -41,7 +38,6 @@ import core.ui.layouts.LayoutAlign;
 import core.ui.managers.FocusManager;
 import core.ui.util.BindingUtil;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.TabNavigatorSkin;
 
 @:meta(Event(type="core.ui.events.TabNavigatorEvent",name="closeTab"))
 class TabNavigator extends ViewStack

@@ -24,8 +24,7 @@
  
 package core.ui.events;
 
-import core.ui.events.UIComponent;
-import nme.events.Event;
+import flash.events.Event;
 import core.ui.components.UIComponent;
 
 class ComponentFocusEvent extends Event
@@ -46,7 +45,7 @@ class ComponentFocusEvent extends Event
 		return new ComponentFocusEvent(type, _relatedComponent, bubbles, cancelable);
     }
 	
-	private function get_RelatedComponent() : UIComponent
+	private function get_relatedComponent() : UIComponent
 	{
 		return _relatedComponent;
     }

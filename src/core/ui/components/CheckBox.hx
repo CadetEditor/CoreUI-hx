@@ -25,11 +25,11 @@
 package core.ui.components;
 
 import core.ui.components.ItemEditorEvent;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import nme.text.TextFieldAutoSize;
-import nme.text.TextFormat;
-import nme.text.TextFormatAlign;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.text.TextFieldAutoSize;
+import flash.text.TextFormat;
+import flash.text.TextFormatAlign;
 import core.ui.events.ItemEditorEvent;
 import flux.skins.CheckBoxSkin;
 

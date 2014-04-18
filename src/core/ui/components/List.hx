@@ -24,29 +24,15 @@
   
 package core.ui.components;
 
-import core.ui.components.ArrayCollectionEvent;
-import core.ui.components.ClassReference;
-import core.ui.components.DefaultDataDescriptor;
-import core.ui.components.Dictionary;
-import core.ui.components.DragAndDropEvent;
-import core.ui.components.IDataDescriptor;
-import core.ui.components.ItemRendererClass;
-import core.ui.components.ListDropIndicatorSkin;
-import core.ui.components.ListSkin;
-import core.ui.components.ScrollBar;
-import core.ui.components.ScrollEvent;
 import core.ui.components.UIComponent;
-import nme.display.DisplayObject;
-import nme.display.InteractiveObject;
-import nme.display.Sprite;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import nme.geom.Point;
-import nme.geom.Rectangle;
-import nme.utils.Dictionary;
-import core.data.ArrayCollection;
-import core.events.ArrayCollectionChangeKind;
-import core.events.ArrayCollectionEvent;
+import flash.display.DisplayObject;
+import flash.display.InteractiveObject;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.geom.Point;
+import flash.geom.Rectangle;
+import flash.utils.Dictionary;
 import core.ui.CoreUI;
 import core.ui.components.IItemRenderer;
 import core.ui.data.DefaultDataDescriptor;
@@ -55,8 +41,6 @@ import core.ui.events.DragAndDropEvent;
 import core.ui.events.ListEvent;
 import core.ui.events.ScrollEvent;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.ListDropIndicatorSkin;
-import flux.skins.ListSkin;
 
 @:meta(Event(type="flash.events.Event",name="change"))
 @:meta(Event(type="core.ui.events.ScrollEvent",name="scrollChange"))

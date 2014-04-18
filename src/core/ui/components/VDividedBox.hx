@@ -25,13 +25,13 @@
 package core.ui.components;
 
 import core.ui.components.HDividerThumbSkin;
-import nme.display.DisplayObject;
-import nme.display.Sprite;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import nme.geom.Rectangle;
-import nme.ui.Mouse;
-import nme.ui.MouseCursor;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.geom.Rectangle;
+import flash.ui.Mouse;
+import flash.ui.MouseCursor;
 import core.ui.events.ResizeEvent;
 import core.ui.layouts.VerticalLayout;
 import core.ui.managers.CursorManager;

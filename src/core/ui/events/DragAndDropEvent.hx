@@ -24,9 +24,7 @@
   
 package core.ui.events;
 
-import core.ui.events.ArrayCollection;
-import nme.events.Event;
-import core.data.ArrayCollection;
+import flash.events.Event;
 
 class DragAndDropEvent extends Event
 {

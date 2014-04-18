@@ -1,21 +1,14 @@
 package core.ui.components;
 
-import core.ui.components.DefaultPropertyInspectorDataDescriptor;
-import core.ui.components.IPropertyInspectorDataDescriptor;
-import core.ui.components.PropertyInspectorEvent;
-import core.ui.components.PropertyInspectorField;
 import core.ui.components.PropertyInspectorItemRenderer;
-import core.ui.components.PropertyInspectorSkin;
 import core.ui.components.ScrollBar;
 import core.ui.components.UIComponent;
 import core.ui.components.VBox;
-import nme.errors.Error;
-import nme.display.Sprite;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import nme.utils.Dictionary;
-import core.data.ArrayCollection;
-import core.events.ArrayCollectionEvent;
+import flash.errors.Error;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.utils.Dictionary;
 import core.ui.CoreUI;
 import core.ui.data.DefaultPropertyInspectorDataDescriptor;
 import core.ui.data.IPropertyInspectorDataDescriptor;
@@ -23,7 +16,6 @@ import core.ui.data.PropertyInspectorField;
 import core.ui.events.ItemEditorEvent;
 import core.ui.events.PropertyInspectorEvent;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.PropertyInspectorSkin;
 
 @:meta(Event(type="core.ui.events.PropertyInspectorEvent",name="commitValue"))
 class PropertyInspector extends UIComponent

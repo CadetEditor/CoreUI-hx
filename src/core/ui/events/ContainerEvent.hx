@@ -24,9 +24,8 @@
   
 package core.ui.events;
 
-import core.ui.events.DisplayObject;
-import nme.display.DisplayObject;
-import nme.events.Event;
+import flash.display.DisplayObject;
+import flash.events.Event;
 
 class ContainerEvent extends Event
 {
@@ -42,12 +41,12 @@ class ContainerEvent extends Event
 		super(type, bubbles, cancelable);_child = child;_index = index;
     }
 	
-	private function get_Child() : DisplayObject
+	private function get_child() : DisplayObject
 	{
 		return _child;
     }
 	
-	private function get_Index() : Int
+	private function get_index() : Int
 	{
 		return _index;
     }

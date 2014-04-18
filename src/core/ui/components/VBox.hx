@@ -24,7 +24,6 @@
   
 package core.ui.components;
 
-import core.ui.components.VerticalLayout;
 import core.ui.layouts.HorizontalLayout;
 import core.ui.layouts.VerticalLayout;
 

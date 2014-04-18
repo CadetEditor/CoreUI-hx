@@ -24,25 +24,18 @@
   
 package core.ui.components;
 
-import core.ui.components.ButtonSkin;
-import core.ui.components.Image;
-import core.ui.components.MovieClip;
-import core.ui.components.PropertyChangeEvent;
-import core.ui.components.SkinClass;
-import core.ui.components.UIComponent;
-import nme.display.MovieClip;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import nme.geom.Rectangle;
-import nme.text.TextField;
-import nme.text.TextFieldAutoSize;
-import nme.text.TextFormat;
-import nme.text.TextFormatAlign;
-import core.events.PropertyChangeEvent;
+import core.layout.TextAlign;
+import flash.display.MovieClip;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.geom.Rectangle;
+import flash.text.TextField;
+import flash.text.TextFieldAutoSize;
+import flash.text.TextFormat;
+import flash.text.TextFormatAlign;
 import core.ui.CoreUI;
 import core.ui.events.SelectEvent;
 import core.ui.util.Scale9GridUtil;
-import flux.skins.ButtonSkin;
 
 @:meta(Event(type="flash.events.Event",name="change"))
 @:meta(Event(type="core.ui.events.SelectEvent",name="select"))
@@ -59,7 +52,7 @@ class Button extends UIComponent
 	private var _down : Bool = false;
 	private var _selected : Bool = false;
 	private var _toggle : Bool = false;
-	private var _labelAlign : String = TextFormatAlign.CENTER;
+	private var _labelAlign : TextFormatAlign = TextFormatAlign.CENTER;
 	public var selectMode : String = ButtonSelectMode.CLICK;
 	public var userData : Dynamic;  
 	
@@ -73,7 +66,8 @@ class Button extends UIComponent
 	
 	public function new(skinClass : Class<Dynamic> = null)
     {
-		this.skinClass = skinClass;super();
+		this.skinClass = skinClass;
+		super();
     }  
 	
 	////////////////////////////////////////////////    
@@ -85,7 +79,7 @@ class Button extends UIComponent
 		focusEnabled = true;
 		skin = skinClass == (null) ? new ButtonSkin() : Type.createInstance(skinClass, []);
 		
-		if (!skin.scale9Grid) {  
+		if (skin.scale9Grid == null) {  
 			//var s9g:Rectangle = FloxUI.getDefaultButtonSkinScale9Grid();    
 			//skin.scale9Grid = new Rectangle();  
 			Scale9GridUtil.setScale9Grid(skin, CoreUI.defaultButtonSkinScale9Grid);
@@ -120,8 +114,8 @@ class Button extends UIComponent
 		}
 		*/  
 		labelField.x = iconImage.source == (null) ? 4 : iconImage.x + iconImage.width + 4;
-		labelField.height = Math.min(labelField.textHeight + 4, _height);
-		labelField.y = (_height - (labelField.height)) >> 1;
+		labelField.height = Math.min(Std.int(labelField.textHeight) + 4, _height);
+		labelField.y = Std.int(_height - labelField.height) >> 1;
 		var tf : TextFormat = labelField.defaultTextFormat; tf.align = _labelAlign;
 		
 		if (_resizeToContentWidth) {
@@ -135,7 +129,7 @@ class Button extends UIComponent
 			// TextFormat.align = CENTER to avoid text aliasing.  
 			if (_labelAlign == TextFormatAlign.CENTER) {
 				tf.align = TextFormatAlign.LEFT;
-				var newX : Int = ((_width - labelField.x) - labelField.textWidth) >> 1;
+				var newX : Int = Std.int((_width - labelField.x) - labelField.textWidth) >> 1;
 				labelField.x = newX > (labelField.x) ? newX : labelField.x;
             }
         }
@@ -225,27 +219,27 @@ class Button extends UIComponent
 	// Getters/Setters    
 	////////////////////////////////////////////////  
 	
-	override private function set_Label(str : String) : String {
+	override private function set_label(str : String) : String {
 		_label = str; 
-		labelField.text = (_label) ? _label : "";
+		labelField.text = (_label != null) ? _label : "";
 		if (_resizeToContentWidth) {
 			invalidate();
         }
         return str;
     }
 	
-	override private function set_Icon(value : Dynamic) : Dynamic
+	override private function set_icon(value : Dynamic) : Dynamic
 	{
-		if (_icon == value) return;
+		if (_icon == value) return null;
 		_icon = value;
 		iconImage.source = value;
 		invalidate();
         return value;
     }
 	
-	private function set_Selected(value : Bool) : Bool
+	private function set_selected(value : Bool) : Bool
 	{
-		if (_selected == value) return;
+		if (_selected == value) return null;
 		var oldValue : Bool = _selected;
 		_selected = value;
 		var event : Event = new Event(Event.CHANGE, false, true);
@@ -253,7 +247,7 @@ class Button extends UIComponent
 		
 		if (event.isDefaultPrevented()) {
 			_selected = oldValue;
-			return;
+			return null;
         }
 		
 		(_selected) ? skin.gotoAndPlay("SelectedUp") : skin.gotoAndPlay("Up");
@@ -262,41 +256,41 @@ class Button extends UIComponent
         return value;
     }
 	
-	private function get_Selected() : Bool
+	private function get_selected() : Bool
 	{
 		return _selected;
     }
 	
-	private function set_Toggle(value : Bool) : Bool
+	private function set_toggle(value : Bool) : Bool
 	{
 		_toggle = value;
         return value;
     }
 	
-	private function get_Toggle() : Bool
+	private function get_toggle() : Bool
 	{
 		return _toggle;
     }
 	
-	private function get_Over() : Bool
+	private function get_over() : Bool
 	{
 		return _over;
     }
 	
-	private function get_Down() : Bool
+	private function get_down() : Bool
 	{
 		return _down;
     }
 	
-	private function set_LabelAlign(v : String) : String
+	private function set_labelAlign(v : TextFormatAlign) : TextFormatAlign
 	{
-		if (_labelAlign == v) return;
+		if (_labelAlign == v) return null;
 		_labelAlign = v;
 		invalidate();
         return v;
     }
 	
-	private function get_LabelAlign() : String
+	private function get_labelAlign() : TextFormatAlign
 	{
 		return _labelAlign;
     }

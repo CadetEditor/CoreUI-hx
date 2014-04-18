@@ -24,9 +24,9 @@
   
 package core.ui.components;
 
-import nme.text.TextFieldAutoSize;
-import nme.text.TextFormat;
-import nme.text.TextFormatAlign;
+import flash.text.TextFieldAutoSize;
+import flash.text.TextFormat;
+import flash.text.TextFormatAlign;
 import flux.skins.RadioButtonSkin;
 
 class RadioButton extends Button

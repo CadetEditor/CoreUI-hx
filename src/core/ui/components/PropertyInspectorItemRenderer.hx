@@ -1,11 +1,8 @@
 package core.ui.components;
 
-import core.ui.components.EditorType;
 import core.ui.components.UIComponent;
-import nme.errors.Error;
-import nme.events.Event;
-import nme.utils.ClearInterval;
-import nme.utils.SetInterval;
+import flash.errors.Error;
+import flash.events.Event;
 import core.layout.TextAlign;
 import core.ui.data.PropertyInspectorField;
 import core.ui.events.ItemEditorEvent;

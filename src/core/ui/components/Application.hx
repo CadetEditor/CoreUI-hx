@@ -24,18 +24,12 @@
   
 package core.ui.components;
 
-import core.ui.components.Container;
-import core.ui.components.CursorManager;
-import core.ui.components.Event;
-import core.ui.components.FocusManager;
-import core.ui.components.Sprite;
-import core.ui.components.ToolTipManager;
-import nme.errors.Error;
-import nme.display.Sprite;
-import nme.display.StageAlign;
-import nme.display.StageScaleMode;
-import nme.events.Event;
-import nme.system.ApplicationDomain;
+import flash.errors.Error;
+import flash.display.Sprite;
+import flash.display.StageAlign;
+import flash.display.StageScaleMode;
+import flash.events.Event;
+import flash.system.ApplicationDomain;
 import core.ui.managers.CursorManager;
 import core.ui.managers.FocusManager;
 import core.ui.managers.PopUpManager;
@@ -91,7 +85,7 @@ class Application extends Container
 		addRawChild(disableSheet);
 		addRawChild(_cursorContainer);
 		
-		if (stage) {
+		if (stage != null) {
 			init2();
         } else {
 			addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
@@ -133,24 +127,24 @@ class Application extends Container
 		validateNow();
     }
 	
-	private function get_PopUpContainer() : Sprite
+	private function get_popUpContainer() : Sprite
 	{
 		return _popUpContainer;
     }
 	
-	private function get_ToolTipContainer() : Sprite
+	private function get_toolTipContainer() : Sprite
 	{
 		return _toolTipContainer;
     }
 	
-	private function get_CursorContainer() : Sprite
+	private function get_cursorContainer() : Sprite
 	{
 		return _cursorContainer;
     }
 	
-	override private function set_Enabled(value : Bool) : Bool
+	private override function set_enabled(value : Bool) : Bool
 	{
-		if (value == _enabled) return;
+		if (value == _enabled) return null;
 		_enabled = value;
 		
 		if (_enabled) {

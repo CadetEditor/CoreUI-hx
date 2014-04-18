@@ -25,10 +25,10 @@
 package core.ui.components;
 
 import core.ui.components.UIComponent;
-import nme.text.TextField;
-import nme.text.TextFieldAutoSize;
-import nme.text.TextFormat;
-import nme.text.TextFormatAlign;
+import flash.text.TextField;
+import flash.text.TextFieldAutoSize;
+import flash.text.TextFormat;
+import flash.text.TextFormatAlign;
 
 class Label extends UIComponent
 {
@@ -100,7 +100,7 @@ class Label extends UIComponent
 	// Getters/Setters    
 	////////////////////////////////////////////////  
 	
-	private function set_TextAlign(value : String) : String
+	private function set_textAlign(value : String) : String
 	{
 		if (value == textField.defaultTextFormat.align) return;
 		var tf : TextFormat = textField.defaultTextFormat;
@@ -110,7 +110,7 @@ class Label extends UIComponent
         return value;
     }
 	
-	private function get_TextAlign() : String
+	private function get_textAlign() : String
 	{
 		return textField.defaultTextFormat.align;
     }
@@ -122,17 +122,17 @@ class Label extends UIComponent
         return value;
     }
 	
-	private function get_Text() : String
+	private function get_text() : String
 	{
 		return textField.text;
     }
 	
-	private function get_FontColor() : Int
+	private function get_fontColor() : Int
 	{
 		return _fontColor;
     }
 	
-	private function set_FontColor(value : Int) : Int
+	private function set_fontColor(value : Int) : Int
 	{
 		_fontColor = value;
 		var tf : TextFormat = textField.defaultTextFormat;
@@ -142,12 +142,12 @@ class Label extends UIComponent
         return value;
     }
 	
-	private function get_FontSize() : Float
+	private function get_fontSize() : Float
 	{
 		return _fontSize;
     }
 	
-	private function set_FontSize(value : Float) : Float
+	private function set_fontSize(value : Float) : Float
 	{
 		_fontSize = value;
 		var tf : TextFormat = textField.defaultTextFormat;
@@ -157,12 +157,12 @@ class Label extends UIComponent
         return value;
     }
 	
-	private function get_Bold() : Bool
+	private function get_bold() : Bool
 	{
 		return _bold;
     }
 	
-	private function set_Bold(value : Bool) : Bool
+	private function set_bold(value : Bool) : Bool
 	{
 		_bold = value;
 		var tf : TextFormat = textField.defaultTextFormat;

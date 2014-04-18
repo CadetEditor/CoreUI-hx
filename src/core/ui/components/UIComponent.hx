@@ -26,10 +26,9 @@
   
 package core.ui.components;
 
-import nme.display.Sprite;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import core.events.PropertyChangeEvent;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
 import core.ui.events.ResizeEvent;
 import core.ui.managers.FocusManager;
 
@@ -55,8 +54,8 @@ class UIComponent extends Sprite implements IUIComponent
 	private var _height : Float = 0;
 	private var _minWidth : Float = 0;
 	private var _minHeight : Float = 0;
-	private var _percentWidth : Float = NaN;
-	private var _percentHeight : Float = NaN;
+	private var _percentWidth : Float;
+	private var _percentHeight : Float;
 	private var _label : String = "";
 	private var _toolTip : String;
 	private var _icon : Dynamic;
@@ -137,10 +136,10 @@ class UIComponent extends Sprite implements IUIComponent
 	
 	private function mouseDownHandler(event : MouseEvent) : Void
 	{
-		if (FocusManager.isFocusedItemAChildOf(this)) return;
+		if (FocusManager.IsFocusedItemAChildOf(this)) return;
 		var target : UIComponent = try cast(event.target, UIComponent) catch (e:Dynamic) null;
 		if (target != null && target != this && target.focusEnabled) return;
-		FocusManager.setFocus(this);
+		FocusManager.SetFocus(this);
     }
 	
 	private function onInvalidateHandler(event : Event) : Void
@@ -152,40 +151,41 @@ class UIComponent extends Sprite implements IUIComponent
 	// Getters/Setters    
 	////////////////////////////////////////////////  
 	
-	override private function set_Width(value : Float) : Float
+	override private function set_width(value : Float) : Float
 	{
 		value = Math.round(value < (_minWidth != 0) ? _minWidth : value);
-		if (value == _width) return;
+		if (value == _width) return null;
 		_width = value;
 		invalidate();
 		dispatchEvent(new ResizeEvent(ResizeEvent.RESIZE, true));
         return value;
     }
 	
-	override private function get_Width() : Float
+	override private function get_width() : Float
 	{
 		return _width;
     }
 	
-	override private function set_Height(value : Float) : Float
+	override private function set_height(value : Float) : Float
 	{
 		value = Math.round(value < (_minHeight != 0) ? _minHeight : value);
-		if (value == _height) return;
+		if (value == _height) return null;
 		_height = value; 
 		invalidate();
 		dispatchEvent(new ResizeEvent(ResizeEvent.RESIZE, true));
         return value;
     }
 	
-	override private function get_Height() : Float
+	override private function get_height() : Float
 	{
 		return _height;
     }
 	
-	private function set_PercentWidth(value : Float) : Float
+	private function set_percentWidth(value : Float) : Float
 	{
 		if (Math.isNaN(value)) {
-			_percentWidth = NaN;
+			//_percentWidth = NaN;
+			// floats are initialised as NaN
         } else {
 			_percentWidth = value < (0) ? 0 : value;
         }
@@ -194,15 +194,16 @@ class UIComponent extends Sprite implements IUIComponent
         return value;
     }
 	
-	private function get_PercentWidth() : Float
+	private function get_percentWidth() : Float
 	{
 		return _percentWidth;
     }
 	
-	private function set_PercentHeight(value : Float) : Float
+	private function set_percentHeight(value : Float) : Float
 	{
 		if (Math.isNaN(value)) {
-			_percentHeight = NaN;
+			//_percentHeight;
+			// floats are initialised as NaN
         } else {
 			_percentHeight = value < (0) ? 0 : value;
         }
@@ -212,30 +213,30 @@ class UIComponent extends Sprite implements IUIComponent
         return value;
     }
 	
-	private function get_PercentHeight() : Float
+	private function get_percentHeight() : Float
 	{
 		return _percentHeight;
     }
 	
-	override private function set_X(value : Float) : Float
+	override private function set_x(value : Float) : Float
 	{
 		value = Math.round(value);
-		if (value == x) return;
+		if (value == x) return null;
 		super.x = value;
         return value;
     }
 	
-	override private function set_Y(value : Float) : Float
+	override private function set_y(value : Float) : Float
 	{
 		value = Math.round(value);
-		if (value == y) return;
+		if (value == y) return null;
 		super.y = value;
         return value;
     }
 	
-	private function set_Label(value : String) : String
+	private function set_label(value : String) : String
 	{
-		if (_label == value) return;
+		if (_label == value) return null;
 		var oldValue : String = _label;
 		_label = value;
 		invalidate();
@@ -243,14 +244,14 @@ class UIComponent extends Sprite implements IUIComponent
         return value;
     }
 	
-	private function get_Label() : String
+	private function get_label() : String
 	{
 		return _label;
     }
 	
-	private function set_Icon(value : Dynamic) : Dynamic
+	private function set_icon(value : Dynamic) : Dynamic
 	{
-		if (_icon == value) return;
+		if (_icon == value) return null;
 		var oldValue : Dynamic = _icon;
 		_icon = value; 
 		invalidate();
@@ -258,14 +259,14 @@ class UIComponent extends Sprite implements IUIComponent
         return value;
     }
 	
-	private function get_Icon() : Dynamic
+	private function get_icon() : Dynamic
 	{
 		return _icon;
     }
 	
-	private function set_Enabled(value : Bool) : Bool
+	private function set_enabled(value : Bool) : Bool
 	{
-		if (value == _enabled) return;
+		if (value == _enabled) return null;
 		_enabled = value;
 		mouseEnabled = value;
 		mouseChildren = value;
@@ -273,53 +274,53 @@ class UIComponent extends Sprite implements IUIComponent
         return value;
     }
 	
-	private function get_Enabled() : Bool
+	private function get_enabled() : Bool
 	{
 		return _enabled;
     }
 	
-	private function set_ResizeToContentWidth(value : Bool) : Bool
+	private function set_resizeToContentWidth(value : Bool) : Bool
 	{
-		if (value == _resizeToContentWidth) return;
+		if (value == _resizeToContentWidth) return null;
 		_resizeToContentWidth = value;
 		invalidate();
         return value;
     }
 	
-	private function get_ResizeToContentWidth() : Bool
+	private function get_resizeToContentWidth() : Bool
 	{
 		return _resizeToContentWidth;
     }
 	
-	private function set_ResizeToContentHeight(value : Bool) : Bool
+	private function set_resizeToContentHeight(value : Bool) : Bool
 	{
-		if (value == _resizeToContentHeight) return;
+		if (value == _resizeToContentHeight) return null;
 		_resizeToContentHeight = value;
 		invalidate();
         return value;
     }
 	
-	private function get_ResizeToContentHeight() : Bool
+	private function get_resizeToContentHeight() : Bool
 	{
 		return _resizeToContentHeight;
     }
 	
-	private function set_ExcludeFromLayout(value : Bool) : Bool
+	private function set_excludeFromLayout(value : Bool) : Bool
 	{
-		if (value == _excludeFromLayout) return;
+		if (value == _excludeFromLayout) return null;
 		_excludeFromLayout = value;
 		dispatchEvent(new ResizeEvent(ResizeEvent.RESIZE, true));
         return value;
     }
 	
-	private function get_ExcludeFromLayout() : Bool
+	private function get_excludeFromLayout() : Bool
 	{
 		return _excludeFromLayout;
     }
 	
-	private function set_FocusEnabled(value : Bool) : Bool
+	private function set_focusEnabled(value : Bool) : Bool
 	{
-		if (_focusEnabled == value) return;
+		if (_focusEnabled == value) return null;
 		_focusEnabled = value;
 		if (_focusEnabled) {
 			addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
@@ -329,17 +330,17 @@ class UIComponent extends Sprite implements IUIComponent
         return value;
     }
 	
-	private function get_FocusEnabled() : Bool
+	private function get_focusEnabled() : Bool
 	{
 		return _focusEnabled;
     }
 	
-	private function get_ToolTip() : String
+	private function get_toolTip() : String
 	{
 		return _toolTip;
     }
 	
-	private function set_ToolTip(value : String) : String
+	private function set_toolTip(value : String) : String
 	{
 		_toolTip = value;
         return value;

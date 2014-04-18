@@ -24,8 +24,8 @@
   
 package core.ui.layouts;
 
-import nme.display.DisplayObjectContainer;
-import nme.geom.Rectangle;
+import flash.display.DisplayObjectContainer;
+import flash.geom.Rectangle;
 
 interface ILayout
 {

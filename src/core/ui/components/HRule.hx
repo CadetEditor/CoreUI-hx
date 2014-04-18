@@ -26,7 +26,7 @@ package core.ui.components;
 
 import core.ui.components.HRuleSkin;
 import core.ui.components.UIComponent;
-import nme.display.Sprite;
+import flash.display.Sprite;
 import flux.skins.HRuleSkin;
 
 class HRule extends UIComponent

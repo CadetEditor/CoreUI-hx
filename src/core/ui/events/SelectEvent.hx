@@ -24,7 +24,7 @@
   
 package core.ui.events;
 
-import nme.events.Event;
+import flash.events.Event;
 
 class SelectEvent extends Event
 {
@@ -42,7 +42,7 @@ class SelectEvent extends Event
 		return new SelectEvent(type, _selectedItem, bubbles, cancelable);
     }
 	
-	private function get_SelectedItem() : Dynamic
+	private function get_selectedItem() : Dynamic
 	{
 		return _selectedItem;
     }

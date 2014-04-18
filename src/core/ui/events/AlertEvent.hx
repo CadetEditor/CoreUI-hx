@@ -24,8 +24,7 @@
 
 package core.ui.events;
 
-import core.ui.events.Event;
-import nme.events.Event;
+import flash.events.Event;
 
 class AlertEvent extends Event
 {
@@ -44,7 +43,7 @@ class AlertEvent extends Event
 		return new AlertEvent(type, _selectedButton);
     }
 	
-	private function get_SelectedButton() : String
+	private function get_selectedButton() : String
 	{
 		return _selectedButton;
     }

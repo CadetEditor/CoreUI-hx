@@ -24,8 +24,8 @@
   
 package core.ui.components;
 
-import nme.events.KeyboardEvent;
-import nme.ui.Keyboard;
+import flash.events.KeyboardEvent;
+import flash.ui.Keyboard;
 
 class TextInput extends TextArea
 {

@@ -24,9 +24,9 @@
   
 package core.ui.layouts;
 
-import nme.display.DisplayObject;
-import nme.display.DisplayObjectContainer;
-import nme.geom.Rectangle;
+import flash.display.DisplayObject;
+import flash.display.DisplayObjectContainer;
+import flash.geom.Rectangle;
 import core.ui.components.UIComponent;
 
 class VerticalLayout implements ILayout

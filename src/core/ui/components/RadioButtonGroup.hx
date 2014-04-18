@@ -26,9 +26,9 @@
   
 package core.ui.components;
 
-import nme.errors.Error;
-import nme.display.DisplayObject;
-import nme.events.Event;
+import flash.errors.Error;
+import flash.display.DisplayObject;
+import flash.events.Event;
 
 @:meta(Event(name="change",type="flash.events.Event"))
 class RadioButtonGroup extends Container

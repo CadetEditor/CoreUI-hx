@@ -24,13 +24,10 @@
   
 package core.ui.components;
 
-import core.ui.components.TreeEvent;
-import nme.errors.Error;
-import nme.display.DisplayObject;
-import nme.events.Event;
-import nme.utils.Dictionary;
-import core.data.ArrayCollection;
-import core.events.ArrayCollectionEvent;
+import flash.errors.Error;
+import flash.display.DisplayObject;
+import flash.events.Event;
+import flash.utils.Dictionary;
 import core.ui.events.DragAndDropEvent;
 import core.ui.events.TreeEvent;
 import core.ui.components.IItemRenderer;

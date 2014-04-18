@@ -1,7 +1,7 @@
 package core.ui;
 
-import core.ui.Rectangle;
-import nme.geom.Rectangle;
+import flash.geom.Rectangle;
+
 class CoreUI
 {
 	public static function getDefaultButtonSkinScale9Grid() : Rectangle

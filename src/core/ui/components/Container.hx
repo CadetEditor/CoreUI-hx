@@ -24,15 +24,10 @@
   
 package core.ui.components;
 
-import core.ui.components.AbsoluteLayout;
-import core.ui.components.ContainerEvent;
-import core.ui.components.DisplayObject;
-import core.ui.components.ILayout;
-import core.ui.components.UIComponent;
-import nme.display.DisplayObject;
-import nme.display.Sprite;
-import nme.events.Event;
-import nme.geom.Rectangle;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.geom.Rectangle;
 import core.ui.events.ContainerEvent;
 import core.ui.events.ResizeEvent;
 import core.ui.layouts.AbsoluteLayout;
@@ -116,7 +111,7 @@ class Container extends UIComponent
 		return content.getChildIndex(child);
     }
 	
-	override private function get_NumChildren() : Int
+	private function get_NumChildren() : Int
 	{
 		return content.numChildren;
     }  
@@ -214,67 +209,67 @@ class Container extends UIComponent
 	// Getters/Setters    
 	////////////////////////////////////////////////  
 	
-	private function set_Padding(value : Int) : Int
+	private function set_padding(value : Int) : Int
 	{
 		_paddingLeft = _paddingRight = _paddingTop = _paddingBottom = value;
 		invalidate();
         return value;
     }
 	
-	private function get_Padding() : Int
+	private function get_padding() : Int
 	{
 		return _paddingLeft;
     }
 	
-	private function set_PaddingLeft(value : Int) : Int
+	private function set_paddingLeft(value : Int) : Int
 	{
 		_paddingLeft = value;
 		invalidate();
         return value;
     }
 	
-	private function get_PaddingLeft() : Int
+	private function get_paddingLeft() : Int
 	{
 		return _paddingLeft;
     }
 	
-	private function set_PaddingRight(value : Int) : Int
+	private function set_paddingRight(value : Int) : Int
 	{
 		_paddingRight = value;
 		invalidate();
         return value;
     }
 	
-	private function get_PaddingRight() : Int
+	private function get_paddingRight() : Int
 	{
 		return _paddingRight;
     }
 	
-	private function set_PaddingTop(value : Int) : Int
+	private function set_paddingTop(value : Int) : Int
 	{
 		_paddingTop = value;
 		invalidate();
         return value;
     }
 	
-	private function get_PaddingTop() : Int
+	private function get_paddingTop() : Int
 	{
 		return _paddingTop;
     }
 	
-	private function set_PaddingBottom(value : Int) : Int
+	private function set_paddingBottom(value : Int) : Int
 	{
 		_paddingBottom = value;
 		invalidate();
         return value;
     }
 	
-	private function get_PaddingBottom() : Int
+	private function get_paddingBottom() : Int
 	{
 		return _paddingBottom;
     }
 	
-	private function set_Layout(value : ILayout) : ILayout
+	private function set_layout(value : ILayout) : ILayout
 	{
 		_layout = value;
 		if (_layout != null) {
@@ -283,7 +278,7 @@ class Container extends UIComponent
         return value;
     }
 	
-	private function get_Layout() : ILayout
+	private function get_layout() : ILayout
 	{
 		return _layout;
     }

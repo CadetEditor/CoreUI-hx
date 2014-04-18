@@ -24,12 +24,8 @@
 
 package core.ui.util;
 
-import core.ui.util.Dictionary;
-import core.ui.util.IEventDispatcher;
-import core.ui.util.PropertyChangeEvent;
-import nme.events.IEventDispatcher;
-import nme.utils.Dictionary;
-import core.events.PropertyChangeEvent;
+import flash.events.IEventDispatcher;
+import flash.utils.Dictionary;
 
 class BindingUtil
 {
